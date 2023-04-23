@@ -1,0 +1,97 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* --accent-color: rgb(255, 144, 17); */
+    --accent-color: rgb(255, 120, 17);
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #1a1a1a;
+    color: white;
+
+    font-family: 'Space Grotesk';
+    font-size: large;
+
+    border-top: 3px solid var(--accent-color);
+    box-sizing: border-box;
+}
+
+@media only screen and (min-width: 720px) {
+    body {
+        align-self: center;
+        width: 720px;
+    }
+}
+
+body {
+    margin: 0px 15px;
+}
+
+h1 {
+    border-bottom: 1px solid var(--accent-color);
+    padding: 5px;
+}
+
+h1>a,
+h2>a,
+h3>a,
+h4>a {
+    text-decoration: none;
+    transition: color 150ms;
+}
+
+h1>a:hover,
+h2>a:hover,
+h3>a:hover,
+h4>a:hover {
+    color: var(--accent-color);
+}
+
+a,
+u {
+    color: inherit;
+    text-decoration: underline var(--accent-color);
+}
+
+mark {
+    color: var(--accent-color);
+    background: none;
+}
+
+nav {
+    height: 80px;
+    margin-bottom: 75px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav>h1 {
+    border-bottom: none;
+    font-size: 40px;
+    margin: 0;
+
+    font-family: Ubuntu;
+}
+
+nav>h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+#footnote-label {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+}
