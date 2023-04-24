@@ -1,6 +1,6 @@
 ---
-title: "Homepage"
-description: ""
+title: "BRAILOR's blog"
+description: "A blog mainly about Rust."
 date: "2023-04-22"
 hidden: true
 ---
