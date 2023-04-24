@@ -1,5 +1,9 @@
 name: Docker build and registry push
 
+permissions:
+  packages: write
+  contents: read
+
 on:
   push:
     tags:
