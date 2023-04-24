@@ -28,13 +28,13 @@ Deep inside I knew it was going to be just another half-finished project, as all
 
 Browsing through other blog sources written by fellow rustaceans I noticed a recurring pattern: **static site generators**.
 
-Even the [Rust blog](https://github.com/rust-lang/blog.rust-lang.org) is structured as such. This is where I drew my inspiration for serving the content, although I used [tokio](docs.rs/tokio) and [rocket](docs.rs/rocket/0.5.0-rc.3) whilst they [do not](https://github.com/rust-lang/blog.rust-lang.org/blob/master/serve/src/main.rs).
+Even the [Rust blog](https://github.com/rust-lang/blog.rust-lang.org) is structured as such. I actually drew inspiration from that for serving the content, although I used [tokio](docs.rs/tokio) and [rocket](docs.rs/rocket/0.5.0-rc.3) whilst they [do not](https://github.com/rust-lang/blog.rust-lang.org/blob/master/serve/src/main.rs).
 
 But how could I ever scale down to such a rudimentary technology? The world isn't built upon static site generators.
 
 But <mark>I'm not the world</mark>.
 
-It might stupid at first, but once you realize how the weight of the "world" sliding down your shoulders as you settle down to a mediocre compromise comforts you, only then you can fathom the beauty of mediocrity[^1].
+It might sound stupid at first, but once you realize how the weight of the "world" sliding down your shoulders as you settle down to a mediocre compromise comforts you, only then you can fathom the beauty of mediocrity[^1].
 
 As you probably already figured out, this isn't just about blogs. It is a lesson about rationalizing ideas into achievable goals that fit the desired outcome.
 
@@ -104,7 +104,7 @@ struct Metadata {
 
 The `hidden` attribute can be used by Handlebars code to determine if a given page should be listed (e.g. the Index page isn't).
 
-serde_yaml supports borrowed deserialization, allowing for less allocations. But I couldn't make use of it as I need all `Page`'s to be `'static` and allocated inside a `Vec<Page>` for indexing and sorting.
+serde_yaml supports **borrowed deserialization**, allowing for less allocations, but I couldn't make use of it as I need all `Page`'s to be `'static` and allocated inside a `Vec<Page>` for use in Handlebars templates.
 
 Besides, the generator meant to be run **one-shot**, and as long as I can rationally justify these expenses it's fine.
 
@@ -182,7 +182,7 @@ WORKDIR /serve
 RUN cargo build --release --target x86_64-unknown-linux-musl
 ```
 
-I create a "serve" stage from [`rust:latest`](https://hub.docker.com/_/rust) and install the MUSL toolchain. I do this because I want the final image to be based off `alpine`, as the rust one is pretty heavy.
+I create a "serve" stage from [`rust:latest`](https://hub.docker.com/_/rust) and install the MUSL toolchain. I do this because I want the final image to be based off [`alpine`], as the rust one is pretty heavy.
 
 ```dockerfile
 FROM rust:latest as builder
@@ -212,7 +212,7 @@ EXPOSE 8000
 CMD ["./serve"]
 ```
 
-Last but not least, I build the final image from [`alpine`](https://hub.docker.com/_/alpine).
+Last but not least, I build the final image from [`alpine`].
 
 The output image is very lightweight (~18MB in size) and ready to serve.
 
@@ -220,9 +220,11 @@ The output image is very lightweight (~18MB in size) and ready to serve.
 
 I'm very happy with the versatility and simplicity the union of Markdown and Handlebars offers. 
 
-I skipped how I implemented syntax highlighting because I'd rather server-side render it but am using `highlight.js` and I'll probably change it in the future.
+I skipped how I implemented syntax highlighting because I'd rather server-side render it but am using [`highlight.js`](https://highlightjs.org/) and I'll probably discard it in the future.
 
 ---
+
+[`alpine`]: https://hub.docker.com/_/alpine
 
 [^1]: _mĕdĭŏcris_ is a Latin word for "middle, ordinary, common". 
 It isn't to be thought as a derogatory term, although It can mean it in many contexts.
