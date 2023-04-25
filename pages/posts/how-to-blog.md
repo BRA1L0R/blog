@@ -57,7 +57,7 @@ List of blog pages:
 ```
 {{{{/raw}}}}
 
-If you aren't familiar with Handlebar I suggest [reading the official guide](https://handlebarsjs.com/guide/expressions.html#basic-usage).
+If you aren't familiar with Handlebars I suggest [reading the official guide](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 
 ## The code
 
