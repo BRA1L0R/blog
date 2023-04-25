@@ -1,4 +1,4 @@
-use handlebars::Handlebars;
+use handlebars::{handlebars_helper, Handlebars};
 use markdown::{CompileOptions, Options};
 use serde::{Deserialize, Serialize};
 use std::{
@@ -83,6 +83,11 @@ fn read_pages(dir: &Path) -> Result<Vec<Page>, CompilationError> {
 fn hydrate_compile(pages: &[Page], output: &Path) -> Result<(), CompilationError> {
     let mut templating = Handlebars::new();
 
+    handlebars_helper!(crate_link: |name: str, { version: str = "latest" }| {
+        format!("[{name}](https://docs.rs/{name}/{version}) ![](/static/crate-small.svg)")
+    });
+
+    templating.register_helper("crate", Box::new(crate_link));
     templating
         .register_template_string(TEMPLATE_NAME, TEMPLATE)
         .unwrap();

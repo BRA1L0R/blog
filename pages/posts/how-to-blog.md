@@ -28,7 +28,7 @@ Deep inside I knew it was going to be just another half-finished project, as all
 
 Browsing through other blog sources written by fellow rustaceans I noticed a recurring pattern: **static site generators**.
 
-Even the [Rust blog](https://github.com/rust-lang/blog.rust-lang.org) is structured as such. I actually drew inspiration from that for serving the content, although I used [tokio](https://docs.rs/tokio) ![](/static/crate-small.svg) and [rocket](https://docs.rs/rocket/0.5.0-rc.3) ![](/static/crate-small.svg) whilst they [do not](https://github.com/rust-lang/blog.rust-lang.org/blob/master/serve/src/main.rs).
+Even the [Rust blog](https://github.com/rust-lang/blog.rust-lang.org) is structured as such. I actually drew inspiration from that for serving the content, although I used {{crate "tokio"}} and {{crate "rocket" version="0.5.0-rc.3"}} whilst they [do not](https://github.com/rust-lang/blog.rust-lang.org/blob/master/serve/src/main.rs).
 
 But how could I ever scale down to such a rudimentary technology? The world isn't built upon static site generators.
 
@@ -63,12 +63,12 @@ If you aren't familiar with Handlebars I suggest [reading the official guide](ht
 
 Generating the final `dist/` folder containing html pages can be subdivided into these steps:
 1. Indexing:
-    1. **Indexing** through the `pages/` directory with the help of [walkdir](https://docs.rs/walkdir) ![](/static/crate-small.svg)
+    1. **Indexing** through the `pages/` directory with the help of {{crate "walkdir"}}
     2. Separating the [**frontmatter**](https://daily-dev-tips.com/posts/what-exactly-is-frontmatter/) (yaml metadata) from the content
 1. Hydrating and rendering:
     1. **Sorting** pages by **date** into a `Vec<&Page>` of references
-    2. **Hydrating** the Markdown with the help of [handlebars](https://docs.rs/handlebars) ![](/static/crate-small.svg)
-    3. **Compiling** Markdown into HTML with [markdown](https://docs.rs/markdown/1.0.0-alpha.8) ![](/static/crate-small.svg)
+    2. **Hydrating** the Markdown with the help of {{crate "handlebars"}}
+    3. **Compiling** Markdown into HTML with {{crate "markdown" version="1.0.0-alpha.8"}}
     4. **Hydrating** the HTML template with the compiled markdown
 
 Walking through a directory is easy thanks to `walkdir`. I just had to filter out folders:
@@ -86,7 +86,7 @@ for file in directory {
 
 I read all pages into Strings, strip the base from their path and put them in a `Vec<Page>`.
 
-I also separate and decode the frontmatter here. I decode it using [serde_yaml](https://docs.rs/serde_yaml) ![](/static/crate-small.svg) into a `Metadata` struct defined like this:
+I also separate and decode the frontmatter here. I decode it using {{crate "serde_yaml"}} into a `Metadata` struct defined like this:
 
 ```rs
 #[derive(Deserialize, Serialize)]
@@ -108,7 +108,7 @@ serde_yaml supports **borrowed deserialization**, allowing for less allocations,
 
 Besides, the generator meant to be run **one-shot**, and as long as I can rationally justify these expenses it's fine.
 
-I explicitly opted for a **strongly-typed** `Date` type from the [time](https://docs.rs/time) ![](/static/crate-small.svg) crate and enabled the `serde-human-readable` feature so that every date is formatted **the same way**.
+I explicitly opted for a **strongly-typed** `Date` type from the {{crate "time"}} crate and enabled the `serde-human-readable` feature so that every date is formatted **the same way**.
 
 Since `Page` weighs ~150 bytes, sorting that `Vec` directly is unecessarily wasteful. So I create a `Vec<&Page>` and sort them by date:
 

@@ -95,3 +95,7 @@ nav>h1 a {
 img {
     vertical-align: middle;
 }
+
+code {
+    border-radius: 10px;
+}
