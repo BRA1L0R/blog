@@ -6,7 +6,8 @@ body {
 
 html {
     /* --accent-color: rgb(255, 144, 17); */
-    --accent-color: rgb(255, 120, 17);
+    /* --accent-color: rgb(255, 120, 17); */
+    --accent-color: rgb(65, 102, 137);
 
     display: flex;
     flex-direction: column;
@@ -45,20 +46,29 @@ h2>a,
 h3>a,
 h4>a {
     text-decoration: none;
-    transition: color 150ms;
 }
 
+a:hover,
 h1>a:hover,
 h2>a:hover,
 h3>a:hover,
 h4>a:hover {
+    text-decoration: none;
     color: var(--accent-color);
 }
 
 a,
 u {
     color: inherit;
-    text-decoration: underline var(--accent-color);
+
+    text-decoration-line: underline;
+    -webkit-text-decoration-line: underline;
+
+    text-decoration-color: var(--accent-color);
+    -webkit-text-decoration-color: var(--accent-color);
+
+    text-decoration-thickness: 1.5px;
+    transition: color 150ms;
 }
 
 mark {
@@ -98,4 +108,8 @@ img {
 
 code {
     border-radius: 10px;
+}
+
+p {
+    text-align: justify;
 }

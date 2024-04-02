@@ -1,9 +1,11 @@
 use handlebars::{handlebars_helper, Handlebars};
 use markdown::{CompileOptions, Options};
+use notify::{RecursiveMode, Watcher};
 use serde::{Deserialize, Serialize};
 use std::{
     fs::{self, File},
     path::{Path, PathBuf},
+    sync::mpsc,
 };
 use thiserror::Error;
 use time::Date;
@@ -154,7 +156,28 @@ fn compile_pages(source: &Path, output: &Path) -> Result<(), CompilationError> {
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    compile_pages("./pages/".as_ref(), "./dist/".as_ref())?;
+    let watch = std::env::args().any(|arg| arg == "watch");
+    let compile = || compile_pages("./pages/".as_ref(), "./dist/".as_ref());
+
+    if !watch {
+        compile()?;
+        return Ok(());
+    }
+
+    // watcher code for development
+    let (tx, rx) = mpsc::channel();
+    let mut notifier = notify::recommended_watcher(tx)?;
+
+    notifier.watch("./pages/".as_ref(), RecursiveMode::Recursive)?;
+
+    println!("Compiling pages and starting watcher...");
+    compile()?;
+
+    for event in rx {
+        let _ = event?;
+        println!("Compiling pages...");
+        compile()?;
+    }
 
     Ok(())
 }

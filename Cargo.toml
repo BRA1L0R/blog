@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 handlebars = "4.3.6"
 markdown = "1.0.0-alpha.7"
+notify = "6.1.1"
 serde = { version = "1.0.160", features = ["derive"] }
 serde_yaml = "0.9.21"
 thiserror = "1.0.40"
