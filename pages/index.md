@@ -16,9 +16,7 @@ Hi I'm Pietro.
 
 My fields of interest are: embedded systems, cybersecurity, electronics and network programming. 
 
-I work as a <mark>Network Security Engineer</mark> at SynthoHosting. I handle dynamic traffic analysis and build multi-layer filters with eBPF.
-
-I'm the founder of the <mark>Minefence</mark> project: a cloud service for DDoS and bot mitigation for Minecraft servers.
+I work as a <mark>Network Security Engineer</mark> at SynthoHosting. I handle dynamic traffic analysis and build multi-layer filters with eBPF. I'm also the founder of the <mark>Minefence</mark> project: a cloud service for DDoS and bot mitigation for Minecraft servers.
 
 Checkout my **[GitHub](https://github.com/BRA1L0R)** page to get a taste of what I like working on.
 
