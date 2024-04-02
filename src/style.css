@@ -30,6 +30,10 @@ html {
         align-self: center;
         width: 720px;
     }
+
+    p {
+        text-align: justify;
+    }
 }
 
 body {
@@ -108,8 +112,4 @@ img {
 
 code {
     border-radius: 10px;
-}
-
-p {
-    text-align: justify;
 }
