@@ -30,7 +30,7 @@ Checkout my **[GitHub](https://github.com/BRA1L0R)** page to get a taste of what
 - [hyperlight](https://github.com/hyperlightjs/hyperlight) (discontinued): A JavaScript framework for building server side rendered applications with Hyperapp.
 
 
-<br><br>
+<br>
 
 {{#each pages}}
 {{#unless metadata.hidden}}
