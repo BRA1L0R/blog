@@ -72,6 +72,11 @@ u {
     -webkit-text-decoration-color: var(--accent-color);
 
     text-decoration-thickness: 1.5px;
+}
+
+/* Every color must transition gradually */
+a,
+summary {
     transition: color 150ms;
 }
 
@@ -112,4 +117,13 @@ img {
 
 code {
     border-radius: 10px;
+}
+
+details[open]>summary {
+    margin-bottom: 15px;
+}
+
+summary:hover {
+    color: var(--accent-color);
+    cursor: pointer;
 }
