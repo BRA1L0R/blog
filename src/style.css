@@ -119,11 +119,27 @@ code {
     border-radius: 10px;
 }
 
-details[open]>summary {
+details:not([open])>summary {
+    text-decoration: underline 1.5px var(--accent-color);
+}
+
+details:[open]>summary {
     margin-bottom: 15px;
 }
 
 summary:hover {
     color: var(--accent-color);
     cursor: pointer;
+}
+
+ul {
+    padding-left: 25px;
+}
+
+ul>li {
+    margin: 14px 0;
+}
+
+ol>li {
+    margin: 7px 0;
 }
