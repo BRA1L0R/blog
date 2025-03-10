@@ -2,5 +2,5 @@
 dist/
 
 .vscode
-site/
-static/
+#site/
+#static/
