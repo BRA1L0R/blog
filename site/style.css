@@ -8,7 +8,7 @@ html {
     /* --accent-color: rgb(255, 144, 17); */
     /* --accent-color: rgb(255, 120, 17); */
     --accent-color: rgb(255, 255, 255, 0.3);
-    --background-color: rgb(46, 60, 49);
+    --background-color: rgb(55, 78, 61);
 
     display: flex;
     flex-direction: column;
@@ -52,7 +52,7 @@ body {
 h1 {
     /* font-family: "Jacquard 24"; */
     /* font-size: 39px; */
-    border-bottom: 1.5px dotted var(--accent-color);
+    border-bottom: 2px dotted var(--accent-color);
     padding: 5px 0px;
 }
 

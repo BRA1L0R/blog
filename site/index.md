@@ -7,7 +7,7 @@ hidden: true
 
 <img
     src="/static/heathen.jpg"
-    style="display: inline-block; box-sizing: border-box; border-radius: 100%; width: 100px; margin: 0px 0px 0px 0px; border: 1.5px solid var(--accent-color);"
+    style="display: inline-block; box-sizing: border-box; border-radius: 100%; width: 100px; margin: 0px -5px 0px 0px; border: 1.5px solid var(--accent-color);"
     align="right"
 />
 <h1 class="fancy-title">About me</h1>
