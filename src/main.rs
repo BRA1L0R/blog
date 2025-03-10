@@ -3,17 +3,14 @@ use markdown::{CompileOptions, Options};
 use notify::{RecursiveMode, Watcher};
 use serde::{Deserialize, Serialize};
 use std::{
+    collections::HashMap,
     fs::{self, File},
     path::{Path, PathBuf},
-    sync::mpsc,
+    sync::{mpsc, LazyLock, Mutex},
 };
 use thiserror::Error;
 use time::Date;
 use walkdir::WalkDir;
-
-const STYLE: &str = include_str!("./style.css");
-const TEMPLATE: &str = include_str!("./template.html");
-const TEMPLATE_NAME: &str = "page";
 
 #[derive(Deserialize, Serialize, Debug)]
 struct Metadata {
@@ -56,7 +53,8 @@ fn read_pages(dir: &Path) -> Result<Vec<Page>, CompilationError> {
     let directory = WalkDir::new(dir)
         .into_iter()
         .filter_map(Result::ok)
-        .filter(|entry| entry.path().is_file());
+        .filter(|entry| entry.path().is_file())
+        .filter(|entry| entry.file_name().to_string_lossy().ends_with(".md"));
 
     for file in directory {
         let path = file.into_path();
@@ -82,18 +80,40 @@ fn read_pages(dir: &Path) -> Result<Vec<Page>, CompilationError> {
     Ok(pages)
 }
 
+static INCLUDE_CACHE: LazyLock<Mutex<HashMap<PathBuf, String>>> = LazyLock::new(Default::default);
 fn hydrate_compile(pages: &[Page], output: &Path) -> Result<(), CompilationError> {
     let mut templating = Handlebars::new();
+    templating.register_escape_fn(handlebars::no_escape);
 
     handlebars_helper!(crate_link: |name: str, { version: str = "latest" }| {
         format!("[{name}](https://docs.rs/{name}/{version}) ![](/static/crate-small.svg)")
     });
 
+    // let cache: HashMap<String, String> = HashMap::new();
+
+    handlebars_helper!(include: |path: str| {
+        let mut cache = INCLUDE_CACHE.lock().unwrap();
+        let path = Path::new(path);
+
+        if let Some(file) = cache.get(path) {
+            file.to_owned()
+        } else {
+            let full_path = Path::new("site").join(path);
+            let read = std::fs::read_to_string(&full_path).expect("missing included file");
+
+            cache.entry(path.to_owned()).or_insert(read).clone()
+        }
+    });
+
     templating.register_helper("crate", Box::new(crate_link));
+    templating.register_helper("include", Box::new(include));
+
+    let template = std::fs::read_to_string("./site/template.html")?;
     templating
-        .register_template_string(TEMPLATE_NAME, TEMPLATE)
+        .register_template_string("template", template)
         .unwrap();
 
+    // remove previously generated output
     fs::remove_dir_all(output).ok();
 
     let mut sorted: Vec<&Page> = pages.iter().collect();
@@ -123,26 +143,25 @@ fn hydrate_compile(pages: &[Page], output: &Path) -> Result<(), CompilationError
             pages: &sorted,
             page,
         };
-        let hydrated = templating.render_template(&page.raw, &data)?;
-        let compiled = markdown::to_html_with_options(&hydrated, &options).unwrap();
+        let markdown_hydrated = templating.render_template(&page.raw, &data)?;
+        let markdown_compiled =
+            markdown::to_html_with_options(&markdown_hydrated, &options).unwrap();
 
         #[derive(Serialize)]
         struct RenderingData<'a> {
             metadata: &'a Metadata,
             content: &'a str,
-            style: &'a str,
         }
 
         let data = RenderingData {
             metadata: &page.metadata,
-            content: &compiled,
-            style: STYLE,
+            content: &markdown_compiled,
         };
 
         fs::create_dir_all(output_path.parent().unwrap())?;
         let mut file = File::create(output_path)?;
 
-        templating.render_to_write(TEMPLATE_NAME, &data, &mut file)?;
+        templating.render_to_write("template", &data, &mut file)?;
     }
 
     Ok(())
@@ -157,7 +176,7 @@ fn compile_pages(source: &Path, output: &Path) -> Result<(), CompilationError> {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let watch = std::env::args().any(|arg| arg == "watch");
-    let compile = || compile_pages("./pages/".as_ref(), "./dist/".as_ref());
+    let compile = || compile_pages("./site/".as_ref(), "./dist/".as_ref());
 
     if !watch {
         compile()?;
@@ -168,7 +187,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let (tx, rx) = mpsc::channel();
     let mut notifier = notify::recommended_watcher(tx)?;
 
-    notifier.watch("./pages/".as_ref(), RecursiveMode::Recursive)?;
+    notifier.watch("./site/".as_ref(), RecursiveMode::Recursive)?;
 
     println!("Compiling pages and starting watcher...");
     compile()?;
