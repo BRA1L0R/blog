@@ -27,7 +27,7 @@ Here are some useful contact links: [**LinkedIn**](https://www.linkedin.com/in/p
 <!-- <summary>A list of projects I'm working/I've worked on</summary> -->
 
 - **Linux / Networking**:
-  - [xdp-loader](https://github.com/hyperlightjs/hyperlight): Load XDP programs through CLI. Has support for `aya-bpf` logging.
+  - [xdp-loader](https://github.com/BRA1L0R/xdp-loader): WIP xdp loader with map pinning and configurable program array dispatching capabilities.
   - [hopper-rs](https://github.com/BRA1L0R/hopper-rs): an L7 reverse proxy for Minecraft. It supports metrics exporting and dynamic reloading.
   - [netherite-rs](https://github.com/BRA1L0R/netherite-rs): Rust library for the Minecraft protocol. It has all the basic building blocks for implementing your own packets through procedural macros.
 - **Embedded**:
