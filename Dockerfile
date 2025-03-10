@@ -19,7 +19,7 @@ COPY Cargo.toml Cargo.toml
 COPY src/ src/
 RUN cargo build --release
 
-COPY pages/ pages/
+COPY site/ site/
 RUN cargo run --release
 
 # FNAL IMAGE
