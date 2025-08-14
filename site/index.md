@@ -1,12 +1,12 @@
 ---
-title: "BRAILOR's blog"
-description: "A blog mainly about Rust and embedded development"
+title: "Pietro's blog"
+description: "Sometimes I find the will to write about the stuff I like. Only sometimes."
 date: "2023-04-22"
 hidden: true
 ---
 
 <img
-    src="/static/heathen.jpg"
+    src="/static/star.jpg"
     style="display: inline-block; box-sizing: border-box; border-radius: 100%; width: 100px; margin: 0px -5px 0px 0px; border: 1.5px solid var(--accent-color);"
     align="right"
 />
