@@ -12,13 +12,13 @@ hidden: true
 />
 <h1 class="fancy-title">About me</h1>
 
-Hi I'm Pietro (18M).
+Hi I'm **Pietro T.** (a.k.a. **brailor**), 19M.
 
 My fields of interest are: embedded systems, cybersecurity, electronics and network programming.
 
-I work mainly as freelancer but I maintain open-source in my spare time.
+I work mainly as freelancer but I maintain open-source projects in my spare time.
 
-Here are some useful contact links: [**LinkedIn**](https://www.linkedin.com/in/pietro-tamilia-3a9168238/), [**Telegram**](https://t.me/stack_smash). Checkout my **[GitHub](https://github.com/BRA1L0R)** page to get a taste of what I like working on.
+Here are some useful contact links: [**LinkedIn**](https://www.linkedin.com/in/pietro-tamilia-3a9168238/), [**Telegram**](https://t.me/stack_smash). Checkout my **[GitHub](https://github.com/BRA1L0R)** to see what I like working on by yourself.
 
 <br>
 
