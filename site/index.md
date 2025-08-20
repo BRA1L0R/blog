@@ -26,10 +26,12 @@ Here are some useful contact links: [**LinkedIn**](https://www.linkedin.com/in/p
 <!-- <details open> -->
 <!-- <summary>A list of projects I'm working/I've worked on</summary> -->
 
-- **Linux / Networking**:
-  - [xdp-loader](https://github.com/BRA1L0R/xdp-loader): WIP xdp loader with map pinning and configurable program array dispatching capabilities.
-  - [hopper-rs](https://github.com/BRA1L0R/hopper-rs): an L7 reverse proxy for Minecraft. It supports metrics exporting and dynamic reloading.
+- **Rust Crates**
+  - [ql-driver](https://github.com/Kezii/ql-driver): Driver for the Brother QL-series thermal printer. Supports image rasterization and greyscale dithering.
   - [netherite-rs](https://github.com/BRA1L0R/netherite-rs): Rust library for the Minecraft protocol. It has all the basic building blocks for implementing your own packets through procedural macros.
+- **Linux / Networking**:
+  - [xdp-loader](https://github.com/BRA1L0R/xdp-loader): **XDP** loader with map pinning and configurable program array dispatching capabilities.
+  - [hopper-rs](https://github.com/BRA1L0R/hopper-rs): an L7 reverse proxy for Minecraft. It supports metrics exporting and dynamic reloading.
 - **Embedded**:
   - [morse-gadget](https://github.com/BRA1L0R/morse-gadget): A very elaborate electronics-related Valentine's day gift. A blog post about it is coming soon
   - [alvik-idf](https://github.com/BRA1L0R/alvik-idf-rs): Library for interfacing with the Alvik hardware on esp32 with IDF on Rust.
