@@ -8,7 +8,7 @@ date: "2024-04-02"
 
 _The full source code can be found here: [github.com/BRA1L0R/morse-gadget](https://github.com/BRA1L0R/morse-gadget)_
 
-## A small incsription
+## A small inscription
 
 This project was made for my girlfriend as a Valentine's day gift, thus it only feels due mentioning her as the sole purpose and motivation behind this project. It took me quite a bit of time and dedication and I wouldn't have done it for anyone other than her 💜
 
