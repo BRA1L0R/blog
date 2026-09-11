@@ -12,7 +12,7 @@ hidden: true
 />
 <h1 class="fancy-title">About me</h1>
 
-Hi I'm **Pietro T.** (a.k.a. **brailor**), 19M.
+Hi I'm **Pietro T.** (a.k.a. **brailor**), 20M.
 
 My fields of interest are: embedded systems, cybersecurity, electronics and network programming.
 
