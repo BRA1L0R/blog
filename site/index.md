@@ -12,13 +12,13 @@ hidden: true
 />
 <h1 class="fancy-title">About me</h1>
 
-Hi I'm **Pietro T.** (a.k.a. **brailor**), 20M.
+I'm **brailor**, 20M
 
 My fields of interest are: embedded systems, cybersecurity, electronics and network programming.
 
 I work mainly as freelancer but I maintain open-source projects in my spare time.
 
-Here are some useful contact links: [**LinkedIn**](https://www.linkedin.com/in/pietro-tamilia-3a9168238/), [**Telegram**](https://t.me/stack_smash). Checkout my **[GitHub](https://github.com/BRA1L0R)** to see what I like working on by yourself.
+Here are some useful contact links: [**LinkedIn**](https://www.linkedin.com/in/pietro-tamilia-3a9168238/), [**Telegram**](https://t.me/stack_smash). Checkout my **[GitHub](https://github.com/BRA1L0R)** to see what I'm working on right now.
 
 <br>
 
@@ -26,6 +26,9 @@ Here are some useful contact links: [**LinkedIn**](https://www.linkedin.com/in/p
 <!-- <details open> -->
 <!-- <summary>A list of projects I'm working/I've worked on</summary> -->
 
+- **Confidential Computing**:
+    - [reticle](https://github.com/prem-research/reticle): Hardware attestation stack for confidential computing - AMD SEV-SNP, Intel TDX and NVIDIA GPU verification via REST API. Rust, NodeJS and WASM.
+    - [nvat-rs](https://github.com/prem-research/nvat-rs): Rust bindings for the NVIDIA Attestation SDK - safe, idiomatic APIs for GPU and NVSwitch confidential computing
 - **Rust Crates**
   - [ql-driver](https://github.com/Kezii/ql-driver): Driver for the Brother QL-series thermal printer. Supports image rasterization and greyscale dithering.
   - [netherite-rs](https://github.com/BRA1L0R/netherite-rs): Rust library for the Minecraft protocol. It has all the basic building blocks for implementing your own packets through procedural macros.

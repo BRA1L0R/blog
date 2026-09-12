@@ -32,7 +32,6 @@ Even the [Rust blog](https://github.com/rust-lang/blog.rust-lang.org) is structu
 
 But how could I ever scale down to such a rudimentary technology? The world isn't built upon static site generators.
 
-But <mark>I'm not the world</mark>.
 
 It might sound stupid at first, but once you realize how the weight of the "world" sliding down your shoulders as you settle down to a mediocre compromise comforts you, only then you can fathom the beauty of mediocrity[^1].
 
