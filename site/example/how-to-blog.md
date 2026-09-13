@@ -2,6 +2,7 @@
 title: "How to make a blog in Rust"
 description: "Yes, I'm talking about this very blog. A journey about how scaling down and settling with compromises can turn out beautiful."
 date: "2023-04-22"
+hidden: true
 ---
 
 # {{page.metadata.title}}
